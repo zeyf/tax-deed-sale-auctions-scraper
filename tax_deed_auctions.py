@@ -304,6 +304,10 @@ for link in county_calendar_links:
                     if column_index in relevant_column_indexes:
                         parcel_data[relevant_column_indexes[column_index]] = column_data_element.text
                 
+                if parcel_data["zoning"] not in [
+                    "R2", "R3", "R4", "RPUD"
+                ]:
+                    continue
                 # Convert frontage and depth to sq_ft, and sq_ft into acres
                 parcel_data["front"] = float(parcel_data["front"])
                 parcel_data["depth"] = float(parcel_data["depth"])
